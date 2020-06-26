@@ -323,6 +323,7 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 112ms (Views: 80.8ms | ActiveRecord: 4.7ms)
 
 
+<<<<<<< HEAD
   [1m[35mSQL (4.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
   [1m[35m (1.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
   [1m[35m (41.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
@@ -482,3 +483,36 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 174ms (Views: 108.8ms | ActiveRecord: 2.9ms)
 
 
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-06-26 18:08:27 -0300
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MessagesController#index as */*
+Completed 500 Internal Server Error in 275ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `ok' for #<Api::V1::MessagesController:0x00007fffe1a9ea28>:
+  app/controllers/api/v1/messages_controller.rb:9:in `index'
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-06-26 18:08:45 -0300
+Processing by Api::V1::MessagesController#index as */*
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2020-06-26 18:39:15 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (32.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (1442.5ms)
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (62.0ms)
+  Rendered layouts/_messages.html.slim (3.6ms)
+  Rendered layouts/_navbar.html.slim (6.3ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (8.3ms)
+Completed 200 OK in 3849ms (Views: 3406.2ms | ActiveRecord: 94.6ms)
+
+
+=======
+>>>>>>> parent of 7d39ac1... create gitignore
