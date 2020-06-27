@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resource :profile, only: [:show, :update]
+
     end
   end
 end
