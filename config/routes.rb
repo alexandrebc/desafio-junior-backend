@@ -24,7 +24,13 @@ Rails.application.routes.draw do
   # API Routes
   namespace 'api' do
     namespace 'v1' do
-      resources :messages
+
+      resources :messages, only: [:index, :show, :create] do
+        collection do
+          get 'sent'
+        end
+      end
+
     end
   end
 end
