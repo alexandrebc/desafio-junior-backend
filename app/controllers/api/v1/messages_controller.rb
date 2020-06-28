@@ -36,7 +36,7 @@ module Api
 
 			private
 				def message_params
-					params.permit(
+					params.require(:message).permit(
 						:title,
 						:content,
 						:receiver_email,
