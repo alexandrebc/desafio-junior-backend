@@ -7,7 +7,7 @@ class Api::V1::ApiController < ActionController::Base
 		current_person.present?
   	end
 
-  	def require_login!
+	  def require_login!
   		return true if authenticate_token
   		render json: { data: 'Acesso negado' }, status: 401
   	end
@@ -18,9 +18,7 @@ class Api::V1::ApiController < ActionController::Base
 
   	private
   		def authenticate_token
-  			authenticate_with_http_token do |token, options|
-  				User.find_by(token: token)
-  			end
+  			User.find_by(token: request.headers['Authorization'])
   		end
 
-end
+end	
